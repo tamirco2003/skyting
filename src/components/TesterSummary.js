@@ -1,0 +1,110 @@
+import React, { Component } from 'react';
+import { withStyles, Divider, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, ButtonBase, CircularProgress } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import QuickGrid from './QuickGrid';
+import firebase from '../Firebase'
+
+const styles = {
+    mostContent: {
+        padding: 24
+    },
+    button: {
+        margin: 20
+    },
+    notesButton: {
+        padding: 24,
+        whitespace: "pre-line"
+    }
+}
+
+class TesterSummary extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tournament: "district1",
+            database: null,
+            open: false,
+            openNotes: {
+                scouter: "",
+                notes: ""
+            }
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    formatDate(unixtime) {
+        let date = new Date(parseInt(unixtime));
+        console.log(unixtime);
+        console.log(date)
+        console.log(date.getDate());
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+    }
+
+    componentDidMount() {
+        firebase.database().ref().on("value", (snapshot) => this.setState({ database: snapshot.val() }));
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <>
+                <div className={classes.mostContent}>
+                    <Select value={this.state.tournament} onChange={this.handleChange} className={classes.button}
+                        inputProps={{
+                            name: 'tournament'
+                        }}>
+                        <MenuItem value="district1">District 1</MenuItem>
+                        <MenuItem value="district2">District 2</MenuItem>
+                        <MenuItem value="district3">District 3</MenuItem>
+                        <MenuItem value="district4">District 4</MenuItem>
+                        <MenuItem value="israel">ארצי</MenuItem>
+                    </Select>
+                </div>
+                <Divider />
+                <div className={classes.mostContent}>
+                    <Typography variant="h6">סיכום בוחנים</Typography>
+                    <br />
+                    {!this.state.database && <center><CircularProgress /></center>}
+                    {this.state.database && !this.state.database[this.state.tournament]  && <Typography variant="h3">לא נמצא מידע</Typography>}
+                    {this.state.database && this.state.database[this.state.tournament] &&
+                        <QuickGrid align="center">
+                            {
+                                Object.values(this.state.database[this.state.tournament].tester).map((value, index) =>
+                                    <Paper xs={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
+                                        open: true,
+                                        openNotes: {
+                                            scouter: value.scouter,
+                                            notes: value.notes,
+                                            date: this.formatDate(Object.keys(this.state.database[this.state.tournament].tester)[index])
+                                        }
+                                    })}>
+                                        <Typography variant="h6">{value.scouter + " - " + this.formatDate(Object.keys(this.state.database[this.state.tournament].tester)[index])}</Typography>
+                                    </Paper>
+                                )
+                            }
+                        </QuickGrid>
+                    }
+                </div>
+                <Dialog open={this.state.open} onClose={() => this.setState({ open: false })}>
+                    <DialogTitle>{this.state.openNotes.scouter}</DialogTitle>
+    
+                    <DialogContent>
+                        <DialogContentText>{this.state.openNotes.date}</DialogContentText>
+                        <br />
+                        <Typography variant="h4">{this.state.openNotes.notes}</Typography>
+                    </DialogContent>
+                </Dialog>
+            </>
+        )
+    }
+}
+
+export default withStyles(styles)(TesterSummary);

@@ -1,0 +1,96 @@
+Home {
+    Scouting {
+        Name (DONT DELETE ON SEND),
+        Group Num,
+        Tournament,
+        Form {
+            Sandstorm {
+                Controls (Autonomous, Manual, None),
+                If Controls {
+                    Cargo (Number, default 0),
+                    Hatch (Number, default 0),
+                    Platform (1, 2, 3)
+                }
+            },
+            Game {
+                Robot Type (Ground Level, Rocket, Defence, Not Working),
+                Rocket (Only if type is Rocket) {
+                    Cargo (Number, default 0),
+                    Hatch (Number, default 0)
+                }
+                Cargo Ship {
+                    Cargo (Number, default 0),
+                    Hatch (Number, default 0)
+                },
+                Pickup Location (Depot, Loading Station)
+            },
+            End Game {
+                Climbing (Boolean),
+                Platform (If Climbing, 1, 2, 3)
+            },
+            Notes/Comments
+        }
+    }
+    Pit Scouting {
+        Name (DONT DELETE ON SEND),
+        Group Num,
+        Tournament,
+        Form {
+            Will be send by Sapir,
+            Special additions,
+            Notes/Comments
+        }
+    }
+    New Scouting {
+        Name (DONT DELETE ON SEND),
+        Tournament,
+        Notes/Comments
+    }
+    Conclusion {
+        Group search (WILL FIND FROM LAST FORMS),
+        New scouting,
+        GRAPHS AND STATS!,
+        All notes about group,
+        Seperate paper for scouting pit
+    }
+}
+
+Database
+String Tournament (district1, district2, district3, district4, israel): {
+    int Team: {
+        "games": {
+            String gameId (random): {
+                "sandstorm": {
+                    "controls": String sandstormControls (autonomous, manual, none),
+                    "cargo": int sandstormCargo/null,
+                    "hatches": int sandstormHatches/null
+                },
+                "game": {
+                    "platformStart": String platformStart (1, 2),
+                    "robotType": String robotType (groundLevel, rocket, defense, broken),
+                    "rocket": {
+                        "cargo": int rocketCargo,
+                        "hatches": int rocketHatches,
+                    }/null,
+                    "cargoShip": {
+                        "cargo": int shipCargo,
+                        "hatches": int shipHatches
+                    },
+                    pickupLocation: {
+                        "depot": bool pickupLocDepot,
+                        "loadingStation": bool pickupLocLoadingStation
+                    }
+                },
+                "endgame": {
+                    "platformEnd": String sandstormHatches (1, 2, 3)
+                }
+            }
+        },
+        "pit" {
+            
+        }
+    },
+    "Testers" {
+
+    }
+}
