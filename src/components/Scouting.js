@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase'
-import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import SForm from './SForm';
 import TextField from '@material-ui/core/TextField';
@@ -11,12 +10,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-
-const styles = {
-    mostContent: {
-        padding: 24
-    }
-}
+import Fade from 'react-reveal/Fade';
 
 class Scouting extends Component {
     constructor() {
@@ -126,9 +120,8 @@ class Scouting extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
-            <SForm onSubmit={this.handleSubmit} className={classes.mostContent} snackbar={this.state.snackbar} loading={this.state.loading}>
+            <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
                 <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
                 <Select value={this.state.tournament} onChange={this.handleChange}
                     inputProps={{
@@ -147,8 +140,12 @@ class Scouting extends Component {
                     <FormControlLabel value="manual" control={<Radio />} label="ידני" />
                     <FormControlLabel value="none" control={<Radio />} label="כלום" />
                 </RadioGroup>
-                <TextField required requiredstate={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""} type="number" name="sandstormCargo" label="כמה קארגו הוכנס?" value={this.state.sandstormCargo} onChange={this.handleChange} margin="none" />
-                <TextField required requiredstate={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""} type="number" name="sandstormHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.sandstormHatches} onChange={this.handleChange} margin="none" />
+                <Fade top collapse when={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""}>
+                    <TextField required type="number" name="sandstormCargo" label="כמה קארגו הוכנס?" value={this.state.sandstormCargo} onChange={this.handleChange} margin="none" />
+                </Fade>
+                <Fade top collapse when={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""}>
+                    <TextField required type="number" name="sandstormHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.sandstormHatches} onChange={this.handleChange} margin="none" />
+                </Fade>
                 <RadioGroup required name="platformStart" formlabel="על איזה פלטפורמה התחילו?" value={this.state.platformStart} onChange={this.handleChange}>
                     <FormControlLabel value="1" control={<Radio />} label="1" />
                     <FormControlLabel value="2" control={<Radio />} label="2" />
@@ -161,9 +158,15 @@ class Scouting extends Component {
                     <FormControlLabel value="defense" control={<Radio />} label="הגנה" />
                     <FormControlLabel value="broken" control={<Radio />} label="ע צ י ץ" />
                 </RadioGroup>
-                <Typography variant="h6" requiredstate={this.state.robotType === "rocket" || this.state.robotType === "jack"}>טיל</Typography>
-                <TextField required requiredstate={this.state.robotType === "rocket" || this.state.robotType === "jack"} type="number" name="rocketCargo" label="כמה קארגו הוכנס?" value={this.state.rocketCargo} onChange={this.handleChange} margin="none" />
-                <TextField required requiredstate={this.state.robotType === "rocket" || this.state.robotType === "jack"} type="number" name="rocketHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.rocketHatches} onChange={this.handleChange} margin="none" />
+                <Fade top collapse when={this.state.robotType === "rocket" || this.state.robotType === "jack"}>
+                    <Typography variant="h6">טיל</Typography>
+                </Fade>
+                <Fade top collapse when={this.state.robotType === "rocket" || this.state.robotType === "jack"}>
+                    <TextField required type="number" name="rocketCargo" label="כמה קארגו הוכנס?" value={this.state.rocketCargo} onChange={this.handleChange} margin="none" />
+                </Fade>
+                <Fade top collapse when={this.state.robotType === "rocket" || this.state.robotType === "jack"}>
+                    <TextField required type="number" name="rocketHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.rocketHatches} onChange={this.handleChange} margin="none" />
+                </Fade>
                 <Typography variant="h6">ספינת קארגו</Typography>
                 <TextField required type="number" name="shipCargo" label="כמה קארגו הוכנס?" value={this.state.shipCargo} onChange={this.handleChange} margin="none" />
                 <TextField required type="number" name="shipHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.shipHatches} onChange={this.handleChange} margin="none" />
@@ -176,13 +179,16 @@ class Scouting extends Component {
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required requiredstate={this.state.climbed === "true"} name="platformEnd" formlabel="לאיזה פלטפורמה טיפס?" value={this.state.platformEnd} onChange={this.handleChange}>
-                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                </RadioGroup>
+                <Fade top collapse when={this.state.climbed === "true"}>
+                    <Typography variant="subtitle1">לאיזה פלטפורמה טיפס?</Typography>
+                    <RadioGroup required name="platformEnd" formlabel="לאיזה פלטפורמה טיפס?" value={this.state.platformEnd} onChange={this.handleChange}>
+                        <FormControlLabel value="2" control={<Radio />} label="2" />
+                        <FormControlLabel value="3" control={<Radio />} label="3" />
+                    </RadioGroup>
+                </Fade>
             </SForm>
         )
     }
 }
 
-export default withStyles(styles)(Scouting);
+export default Scouting;

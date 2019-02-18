@@ -7,9 +7,6 @@ import QuickGrid from './QuickGrid';
 import firebase from '../Firebase'
 
 const styles = {
-    mostContent: {
-        padding: 24
-    },
     button: {
         margin: 20
     },
@@ -53,7 +50,7 @@ class TesterSummary extends Component {
         const { classes } = this.props;
         return (
             <>
-                <div className={classes.mostContent}>
+                <div className="mostContent">
                     <Select value={this.state.tournament} onChange={this.handleChange} className={classes.button}
                         inputProps={{
                             name: 'tournament'
@@ -66,7 +63,7 @@ class TesterSummary extends Component {
                     </Select>
                 </div>
                 <Divider />
-                <div className={classes.mostContent}>
+                <div className="mostContent">
                     <Typography variant="h6">סיכום בוחנים</Typography>
                     <br />
                     {!this.state.database && <center><CircularProgress /></center>}
@@ -75,7 +72,7 @@ class TesterSummary extends Component {
                         <QuickGrid align="center">
                             {
                                 Object.values(this.state.database[this.state.tournament].tester).map((value, index) =>
-                                    <Paper key={index} lg={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
+                                    <Paper key={index} lg={2} className="mostContent" component={ButtonBase} onClick={(e) => this.setState({
                                         open: true,
                                         openNotes: {
                                             scouter: value.scouter,

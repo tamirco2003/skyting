@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase'
 import Typography from '@material-ui/core/Typography';
-import { withStyles, CircularProgress } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
-const styles = {
-    mostContent: {
-        padding: 24
-    }
-}
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -37,17 +31,15 @@ class Leaderboard extends Component {
     }
 
     render() {
-        const { classes } = this.props;
-
         if (!this.state.data) {
             return (
-                <center className={classes.mostContent}>
+                <center className="mostContent">
                     <CircularProgress />
                 </center>
             );
         }
         return (
-            <div className={classes.mostContent}>
+            <div className="mostContent">
                 <Table>
                     <TableHead>
                         <TableRow>
@@ -69,4 +61,4 @@ class Leaderboard extends Component {
     }
 }
 
-export default withStyles(styles)(Leaderboard);
+export default Leaderboard;

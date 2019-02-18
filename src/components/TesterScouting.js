@@ -4,13 +4,6 @@ import SForm from './SForm';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core';
-
-const styles = {
-    mostContent: {
-        padding: 24
-    }
-}
 
 class TesterScouting extends Component {
     constructor(props) {
@@ -66,9 +59,8 @@ class TesterScouting extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
-            <SForm onSubmit={this.handleSubmit} className={classes.mostContent} snackbar={this.state.snackbar} loading={this.state.loading}>
+            <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
                 <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
                 <Select value={this.state.tournament} onChange={this.handleChange}
                     inputProps={{
@@ -86,4 +78,4 @@ class TesterScouting extends Component {
     }
 }
 
-export default withStyles(styles)(TesterScouting);
+export default TesterScouting;

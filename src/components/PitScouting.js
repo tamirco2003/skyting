@@ -9,13 +9,8 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-import { withStyles } from '@material-ui/core';
-
-const styles = {
-    mostContent: {
-        padding: 24
-    }
-}
+import Typography from '@material-ui/core/Typography';
+import Fade from 'react-reveal/Fade';
 
 class PitScouting extends Component {
     constructor(props) {
@@ -102,9 +97,8 @@ class PitScouting extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
-            <SForm onSubmit={this.handleSubmit} className={classes.mostContent} snackbar={this.state.snackbar} loading={this.state.loading}>
+            <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
                 <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
                 <Select value={this.state.tournament} onChange={this.handleChange}
                     inputProps={{
@@ -121,12 +115,15 @@ class PitScouting extends Component {
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required requiredstate={this.state.rocket === "true"} name="rocketSpeed" formlabel="כמה מהרוקט יכול למלא במשחק?" value={this.state.rocketSpeed} onChange={this.handleChange}>
-                    <FormControlLabel value="moreThanOne" control={<Radio />} label="יותר מטיל שלם במשחק" />
-                    <FormControlLabel value="full" control={<Radio />} label="טיל שלם במשחק" />
-                    <FormControlLabel value="half" control={<Radio />} label="חצי טיל במשחק" />
-                    <FormControlLabel value="lessThanHalf" control={<Radio />} label="פחות מחצי טיל במשחק" />
-                </RadioGroup>
+                <Fade top collapse when={this.state.rocket === "true"}>
+                    <Typography variant="subtitle1">כמה מהרוקט יכול למלא במשחק?</Typography>
+                    <RadioGroup required name="rocketSpeed" value={this.state.rocketSpeed} onChange={this.handleChange}>
+                        <FormControlLabel value="moreThanOne" control={<Radio />} label="יותר מטיל שלם במשחק" />
+                        <FormControlLabel value="full" control={<Radio />} label="טיל שלם במשחק" />
+                        <FormControlLabel value="half" control={<Radio />} label="חצי טיל במשחק" />
+                        <FormControlLabel value="lessThanHalf" control={<Radio />} label="פחות מחצי טיל במשחק" />
+                    </RadioGroup>
+                </Fade>
                 <RadioGroup required name="pickupCargo" formlabel="האם יכול להרים קארגו?" value={this.state.pickupCargo} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
@@ -144,14 +141,17 @@ class PitScouting extends Component {
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <FormGroup requiredstate={this.state.climbing === "true"} formlabel="לאיזה פלטפורמה יכול לטפס?">
-                    <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
-                    <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
-                </FormGroup>
+                <Fade top collapse when={this.state.climbing === "true"}>
+                <Typography variant="subtitle1">לאיזה פלטפורמה יכול לטפס?</Typography>
+                    <FormGroup>
+                        <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
+                        <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
+                    </FormGroup>
+                </Fade>
                 <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
             </SForm>
         )
     }
 }
 
-export default withStyles(styles)(PitScouting);
+export default PitScouting;

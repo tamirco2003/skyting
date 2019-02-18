@@ -7,7 +7,6 @@ import PitScouting from './PitScouting';
 import TesterScouting from './TesterScouting';
 import Summary from './Summary';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core';
 import Leaderboard from './Leaderboard';
 import TesterSummary from './TesterSummary';
 
@@ -15,20 +14,13 @@ const theme = createMuiTheme({
     direction: 'rtl',
 });
 
-const styles = {
-    mostContent: {
-        padding: 24
-    }
-}
-
 class App extends Component {
     render() {
-        const { classes } = this.props;
         return (
             <Router>
                 <MuiThemeProvider theme={theme}>
                     <TopNavBar barTitle="סקיינט" />
-                    <div className={classes.mostContent}>
+                    <div className="mostContent">
                         <Paper elevation={1}>
                             <Switch>
                                 <Route path="/scouting" component={Scouting} />
@@ -47,4 +39,4 @@ class App extends Component {
     }
 }
 
-export default withStyles(styles)(App);
+export default App;

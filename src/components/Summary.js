@@ -8,9 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
 const styles = {
-    mostContent: {
-        padding: 24
-    },
     button: {
         margin: 20
     }
@@ -38,7 +35,7 @@ class Summary extends Component {
         const { classes } = this.props;
         return (
             <>
-                <div className={classes.mostContent}>
+                <div className="mostContent">
                     <Select value={this.state.tournament} onChange={this.handleChange} className={classes.button}
                         inputProps={{
                             name: 'tournament'
@@ -53,7 +50,7 @@ class Summary extends Component {
                     <Button variant="contained" className={classes.button} onClick={(e) => this.setState({ currentTeam: this.state.team, currentTournament: this.state.tournament })}>שלח</Button>
                 </div>
                 <Divider />
-                <div className={classes.mostContent}>
+                <div className="mostContent">
                     <Typography variant="h2">סיכום</Typography>
                     <br />
                     <ActualSummary tournament={this.state.currentTournament} team={this.state.currentTeam} />
