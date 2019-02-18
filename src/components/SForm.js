@@ -17,8 +17,8 @@ class SForm extends Component {
                                 lines.unshift(<Typography variant={child.props.variant ? child.props.variant : "subtitle1"}>{child.props.formLabel}</Typography>);
                             }
 
-                            if (child.props.requiredState != null) {
-                                if (!child.props.requiredState) {
+                            if (child.props.requiredstate != null) {
+                                if (!child.props.requiredstate) {
                                     return;
                                 }
                             }

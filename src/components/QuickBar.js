@@ -21,8 +21,6 @@ class QuickBar extends Component {
 
     render() {
         const smallData = this.countArray(this.props.elements, this.props.data);
-        console.log(this.props.data)
-        console.log(this.props.elements)
         return (
             <React.Fragment>
                 <Typography align="center" variant="subtitle1">{this.props.title}</Typography>

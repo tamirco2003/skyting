@@ -54,7 +54,7 @@ class Summary extends Component {
                 </div>
                 <Divider />
                 <div className={classes.mostContent}>
-                    <Typography variant="h6">סיכום</Typography>
+                    <Typography variant="h2">סיכום</Typography>
                     <br />
                     <ActualSummary tournament={this.state.currentTournament} team={this.state.currentTeam} />
                 </div>
