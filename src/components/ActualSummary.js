@@ -60,6 +60,8 @@ class ActualSummary extends Component {
                         {pitData.climbing === "true" &&
                             <Typography variant="h6">הרובוט יכול לטפס ל{!pitData.thirdPlatform ? "פלטפורמה 2" : !pitData.secondPlatform ? "פלטפורמה 3" : "פלטפורמות 2 ו3"}</Typography>
                         }
+                        <Typography variant="h6">הערות:</Typography>
+                        <Typography variant="body1">{pitData.notes === "" || !pitData.notes ? "אין" : pitData.notes}</Typography>
                     </>
                     :
                     <Typography variant="h5">לא נמצא מידע</Typography>

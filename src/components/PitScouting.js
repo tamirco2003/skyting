@@ -33,7 +33,8 @@ class PitScouting extends Component {
             priority: "",
             climbing: "",
             secondPlatform: false,
-            thirdPlatform: false
+            thirdPlatform: false,
+            notes: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -64,7 +65,8 @@ class PitScouting extends Component {
             priority: this.state.priority,
             climbing: this.state.climbing,
             secondPlatform: this.state.secondPlatform,
-            thirdPlatform: this.state.thirdPlatform
+            thirdPlatform: this.state.thirdPlatform,
+            notes: this.state.notes
         })
             .then(() => {
                 itemsRef.child(`scouters/${this.state.scouter}`).transaction((scouterData) => {
@@ -91,7 +93,8 @@ class PitScouting extends Component {
                     priority: "",
                     climbing: "",
                     secondPlatform: false,
-                    thirdPlatform: false
+                    thirdPlatform: false,
+                    notes: ""
                 });
 
                 setTimeout(() => this.setState({ snackbar: false }), 5000);
@@ -145,11 +148,7 @@ class PitScouting extends Component {
                     <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
                     <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
                 </FormGroup>
-
-                {/* <RadioGroup required requiredstate={this.state.climbing === "true"} name="platform" formlabel="לאיזה פלטפורה יכול לטפס?" value={this.state.platform} onChange={this.handleChange}>
-                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                </RadioGroup> */}
+                <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
             </SForm>
         )
     }

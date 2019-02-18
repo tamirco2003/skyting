@@ -9,9 +9,6 @@ import { withStyles } from '@material-ui/core';
 const styles = {
     mostContent: {
         padding: 24
-    },
-    notes: {
-        width: "200%"
     }
 }
 
@@ -83,7 +80,7 @@ class TesterScouting extends Component {
                     <MenuItem value="district4">District 4</MenuItem>
                     <MenuItem value="israel">ארצי</MenuItem>
                 </Select>
-                <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" className={classes.notes} />
+                <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
             </SForm>
         )
     }

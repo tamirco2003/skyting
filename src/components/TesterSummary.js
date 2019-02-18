@@ -75,7 +75,7 @@ class TesterSummary extends Component {
                         <QuickGrid align="center">
                             {
                                 Object.values(this.state.database[this.state.tournament].tester).map((value, index) =>
-                                    <Paper key={index} xs={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
+                                    <Paper key={index} lg={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
                                         open: true,
                                         openNotes: {
                                             scouter: value.scouter,

@@ -8,7 +8,7 @@ class SForm extends Component {
     render() {
         const { children } = this.props;
         return (
-            <FormControl>
+            <FormControl fullWidth>
                 <form autoComplete="off" onSubmit={this.props.onSubmit} className={this.props.className}>
                     {
                         React.Children.map(children, (child, i) => {
