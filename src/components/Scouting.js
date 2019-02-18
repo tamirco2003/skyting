@@ -142,19 +142,19 @@ class Scouting extends Component {
                 </Select>
                 <TextField required type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
                 <Typography variant="h5">Sandstorm</Typography>
-                <RadioGroup required name="sandstormControls" formLabel="שליטה" value={this.state.sandstormControls} onChange={this.handleChange}>
+                <RadioGroup required name="sandstormControls" formlabel="שליטה" value={this.state.sandstormControls} onChange={this.handleChange}>
                     <FormControlLabel value="autonomous" control={<Radio />} label="אוטונומי" />
                     <FormControlLabel value="manual" control={<Radio />} label="ידני" />
                     <FormControlLabel value="none" control={<Radio />} label="כלום" />
                 </RadioGroup>
                 <TextField required requiredstate={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""} type="number" name="sandstormCargo" label="כמה קארגו הוכנס?" value={this.state.sandstormCargo} onChange={this.handleChange} margin="none" />
                 <TextField required requiredstate={this.state.sandstormControls !== "none" && this.state.sandstormControls !== ""} type="number" name="sandstormHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.sandstormHatches} onChange={this.handleChange} margin="none" />
-                <RadioGroup required name="platformStart" formLabel="על איזה פלטפורמה התחילו?" value={this.state.platformStart} onChange={this.handleChange}>
+                <RadioGroup required name="platformStart" formlabel="על איזה פלטפורמה התחילו?" value={this.state.platformStart} onChange={this.handleChange}>
                     <FormControlLabel value="1" control={<Radio />} label="1" />
                     <FormControlLabel value="2" control={<Radio />} label="2" />
                 </RadioGroup>
                 <Typography variant="h5">מהלך המשחק</Typography>
-                <RadioGroup required name="robotType" formLabel="מהו סוג הרובוט?" value={this.state.robotType} onChange={this.handleChange}>
+                <RadioGroup required name="robotType" formlabel="מהו סוג הרובוט?" value={this.state.robotType} onChange={this.handleChange}>
                     <FormControlLabel value="groundLevel" control={<Radio />} label="Ground Level" />
                     <FormControlLabel value="rocket" control={<Radio />} label="טיל" />
                     <FormControlLabel value="jack" control={<Radio />} label="Jack" />
@@ -167,16 +167,16 @@ class Scouting extends Component {
                 <Typography variant="h6">ספינת קארגו</Typography>
                 <TextField required type="number" name="shipCargo" label="כמה קארגו הוכנס?" value={this.state.shipCargo} onChange={this.handleChange} margin="none" />
                 <TextField required type="number" name="shipHatches" label="כמה האטצ'ים הוכנסו?" value={this.state.shipHatches} onChange={this.handleChange} margin="none" />
-                <FormGroup formLabel="מאיפה אסף את הכדורים?">
+                <FormGroup formlabel="מאיפה אסף את הכדורים?">
                     <FormControlLabel control={<Checkbox name="pickupLocDepot" checked={this.state.pickupLocDepot} onChange={this.handleCheckbox} />} label="Depot" />
                     <FormControlLabel control={<Checkbox name="pickupLocLoadingStation" checked={this.state.pickupLocLoadingStation} onChange={this.handleCheckbox} />} label="Loading Station" />
                 </FormGroup>
                 <Typography variant="h5">סוף המשחק</Typography>
-                <RadioGroup required name="climbed" formLabel="האם טיפס?" value={this.state.climbed} onChange={this.handleChange}>
+                <RadioGroup required name="climbed" formlabel="האם טיפס?" value={this.state.climbed} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required requiredstate={this.state.climbed === "true"} name="platformEnd" formLabel="לאיזה פלטפורמה טיפס?" value={this.state.platformEnd} onChange={this.handleChange}>
+                <RadioGroup required requiredstate={this.state.climbed === "true"} name="platformEnd" formlabel="לאיזה פלטפורמה טיפס?" value={this.state.platformEnd} onChange={this.handleChange}>
                     <FormControlLabel value="2" control={<Radio />} label="2" />
                     <FormControlLabel value="3" control={<Radio />} label="3" />
                 </RadioGroup>

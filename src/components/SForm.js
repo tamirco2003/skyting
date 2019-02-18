@@ -13,8 +13,8 @@ class SForm extends Component {
                     {
                         React.Children.map(children, (child, i) => {
                             let lines = [child, <br />, <br />];
-                            if (child.props.formLabel) {
-                                lines.unshift(<Typography variant={child.props.variant ? child.props.variant : "subtitle1"}>{child.props.formLabel}</Typography>);
+                            if (child.props.formlabel) {
+                                lines.unshift(<Typography variant={child.props.variant ? child.props.variant : "subtitle1"}>{child.props.formlabel}</Typography>);
                             }
 
                             if (child.props.requiredstate != null) {

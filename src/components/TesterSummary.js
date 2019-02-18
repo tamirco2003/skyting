@@ -42,9 +42,6 @@ class TesterSummary extends Component {
 
     formatDate(unixtime) {
         let date = new Date(parseInt(unixtime));
-        console.log(unixtime);
-        console.log(date)
-        console.log(date.getDate());
         return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
     }
 
@@ -78,7 +75,7 @@ class TesterSummary extends Component {
                         <QuickGrid align="center">
                             {
                                 Object.values(this.state.database[this.state.tournament].tester).map((value, index) =>
-                                    <Paper xs={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
+                                    <Paper key={index} xs={2} className={classes.mostContent} component={ButtonBase} onClick={(e) => this.setState({
                                         open: true,
                                         openNotes: {
                                             scouter: value.scouter,
