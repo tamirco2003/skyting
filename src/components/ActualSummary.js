@@ -70,7 +70,7 @@ class ActualSummary extends Component {
                             <Typography variant="h6" paragraph>הרובוט יכול לטפס ל{!pitData.thirdPlatform ? "פלטפורמה 2" : !pitData.secondPlatform ? "פלטפורמה 3" : "פלטפורמות 2 ו3"}</Typography>
                         }
                         <Typography variant="h6" paragraph>הערות:</Typography>
-                        <Typography variant="body1" paragraph>{pitData.notes === "" || !pitData.notes ? "לא נמצאו הערות." : pitData.notes}</Typography>
+                        <Typography variant="body1" className="whitespace" paragraph>{pitData.notes === "" || !pitData.notes ? "לא נמצאו הערות." : pitData.notes}</Typography>
                     </>
                     :
                     <Typography variant="h5">לא נמצא מידע</Typography>

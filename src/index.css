@@ -14,3 +14,7 @@ body {
 .formSubtitle.formSubtitle {
   margin-bottom: 16px;
 }
+
+.whitespace.whitespace {
+  white-space: pre;
+}

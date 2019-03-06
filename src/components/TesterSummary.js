@@ -80,7 +80,7 @@ class TesterSummary extends Component {
                                             date: this.formatDate(Object.keys(this.state.database[this.state.tournament].tester)[index])
                                         }
                                     })}>
-                                        <Typography variant="h6">{value.scouter + " - " + this.formatDate(Object.keys(this.state.database[this.state.tournament].tester)[index])}</Typography>
+                                        <Typography className="whitespace" variant="h6">{value.scouter + "\n" + this.formatDate(Object.keys(this.state.database[this.state.tournament].tester)[index])}</Typography>
                                     </Paper>
                                 )
                             }
