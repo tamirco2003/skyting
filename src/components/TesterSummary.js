@@ -39,7 +39,7 @@ class TesterSummary extends Component {
 
     formatDate(unixtime) {
         let date = new Date(parseInt(unixtime));
-        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`
     }
 
     componentDidMount() {

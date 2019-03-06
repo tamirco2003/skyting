@@ -15,11 +15,12 @@ class SForm extends Component {
                             <>
                                 {child.props.formlabel && <Typography variant={child.props.variant ? child.props.variant : "subtitle1"}>{child.props.formlabel}</Typography>}
                                 {child}
-                                <br />
-                                <br />
+                                {/* <br />
+                                <br /> */}
                             </>
                         )
                     }
+                    <br />
                     <br />
                     <Button variant="contained" color="primary" type="submit" disabled={this.props.loading}>שלח</Button>
                     <Snackbar open={this.props.snackbar} message={<span>נשלח!</span>} />

@@ -3,6 +3,14 @@ body {
   padding: 0;
 }
 
-.mostContent {
-  padding: 24px
+.mostContent.mostContent {
+  padding: 24px;
+}
+
+.formHeader.formHeader {
+  margin-bottom: 24px;
+}
+
+.formSubtitle.formSubtitle {
+  margin-bottom: 16px;
 }

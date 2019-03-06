@@ -99,7 +99,8 @@ class PitScouting extends Component {
     render() {
         return (
             <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
-                <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
+                <TextField className="formHeader" required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
+                <br />
                 <Select value={this.state.tournament} onChange={this.handleChange}
                     inputProps={{
                         name: 'tournament'
@@ -110,8 +111,13 @@ class PitScouting extends Component {
                     <MenuItem value="district4">District 4</MenuItem>
                     <MenuItem value="israel">ארצי</MenuItem>
                 </Select>
-                <TextField required type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
-                <RadioGroup required name="rocket" formlabel="האם יכול להכניס לטיל?" value={this.state.rocket} onChange={this.handleChange}>
+                <br />
+                <TextField className="formHeader" required type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
+
+                <br />
+                <br />
+
+                <RadioGroup className="formSubtitle" name="rocket" formlabel="האם יכול להכניס לטיל?" value={this.state.rocket} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
@@ -124,31 +130,32 @@ class PitScouting extends Component {
                         <FormControlLabel value="lessThanHalf" control={<Radio />} label="פחות מחצי טיל במשחק" />
                     </RadioGroup>
                 </Fade>
-                <RadioGroup required name="pickupCargo" formlabel="האם יכול להרים קארגו?" value={this.state.pickupCargo} onChange={this.handleChange}>
+                <br />
+                <RadioGroup className="formSubtitle" name="pickupCargo" formlabel="האם יכול להרים קארגו?" value={this.state.pickupCargo} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required name="pickupHatches" formlabel="האם יכול להרים האטצ'ים?" value={this.state.pickupHatches} onChange={this.handleChange}>
+                <RadioGroup className="formSubtitle" name="pickupHatches" formlabel="האם יכול להרים האטצ'ים?" value={this.state.pickupHatches} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required name="priority" formlabel="האם יש עדיפות לחפץ אחד?" value={this.state.priority} onChange={this.handleChange}>
+                <RadioGroup className="formSubtitle" name="priority" formlabel="האם יש עדיפות לחפץ אחד?" value={this.state.priority} onChange={this.handleChange}>
                     <FormControlLabel value="cargo" control={<Radio />} label="כן, לקארגו" />
                     <FormControlLabel value="hatches" control={<Radio />} label="כן, להאטצ'ים" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
-                <RadioGroup required name="climbing" formlabel="האם יכול לטפס?" value={this.state.climbing} onChange={this.handleChange}>
+                <RadioGroup className="formSubtitle" name="climbing" formlabel="האם יכול לטפס?" value={this.state.climbing} onChange={this.handleChange}>
                     <FormControlLabel value="true" control={<Radio />} label="כן" />
                     <FormControlLabel value="false" control={<Radio />} label="לא" />
                 </RadioGroup>
                 <Fade top collapse when={this.state.climbing === "true"}>
-                <Typography variant="subtitle1">לאיזה פלטפורמה יכול לטפס?</Typography>
+                    <Typography variant="subtitle1">לאיזה פלטפורמה יכול לטפס?</Typography>
                     <FormGroup>
                         <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
                         <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
                     </FormGroup>
                 </Fade>
-                <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
+                <TextField className="formHeader" fullWidth multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
             </SForm>
         )
     }
