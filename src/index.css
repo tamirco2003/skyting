@@ -7,14 +7,6 @@ body {
   padding: 24px;
 }
 
-.formHeader.formHeader {
-  margin-bottom: 24px;
-}
-
-.formSubtitle.formSubtitle {
-  margin-bottom: 16px;
-}
-
 .whitespace.whitespace {
   white-space: pre;
 }

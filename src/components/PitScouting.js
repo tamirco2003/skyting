@@ -11,6 +11,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
+import QuickGrid from './QuickGrid';
 
 class PitScouting extends Component {
     constructor(props) {
@@ -99,63 +100,78 @@ class PitScouting extends Component {
     render() {
         return (
             <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
-                <TextField className="formHeader" required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
-                <br />
-                <Select value={this.state.tournament} onChange={this.handleChange}
-                    inputProps={{
-                        name: 'tournament'
-                    }}>
-                    <MenuItem value="district1">District 1</MenuItem>
-                    <MenuItem value="district2">District 2</MenuItem>
-                    <MenuItem value="district3">District 3</MenuItem>
-                    <MenuItem value="district4">District 4</MenuItem>
-                    <MenuItem value="israel">ארצי</MenuItem>
-                </Select>
-                <br />
-                <TextField className="formHeader" required type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
+                <QuickGrid spacing={32} direction="column">
+                    <QuickGrid spacing={16} direction="column">
+                        <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
+                        <Select value={this.state.tournament} onChange={this.handleChange}
+                            inputProps={{
+                                name: 'tournament'
+                            }}>
+                            <MenuItem value="district1">District 1</MenuItem>
+                            <MenuItem value="district2">District 2</MenuItem>
+                            <MenuItem value="district3">District 3</MenuItem>
+                            <MenuItem value="district4">District 4</MenuItem>
+                            <MenuItem value="israel">ארצי</MenuItem>
+                        </Select>
+                        <TextField required type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
+                    </QuickGrid>
 
-                <br />
-                <br />
-
-                <RadioGroup className="formSubtitle" name="rocket" formlabel="האם יכול להכניס לטיל?" value={this.state.rocket} onChange={this.handleChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="כן" />
-                    <FormControlLabel value="false" control={<Radio />} label="לא" />
-                </RadioGroup>
-                <Fade top collapse when={this.state.rocket === "true"}>
-                    <Typography variant="subtitle1">כמה מהרוקט יכול למלא במשחק?</Typography>
-                    <RadioGroup required name="rocketSpeed" value={this.state.rocketSpeed} onChange={this.handleChange}>
-                        <FormControlLabel value="moreThanOne" control={<Radio />} label="יותר מטיל שלם במשחק" />
-                        <FormControlLabel value="full" control={<Radio />} label="טיל שלם במשחק" />
-                        <FormControlLabel value="half" control={<Radio />} label="חצי טיל במשחק" />
-                        <FormControlLabel value="lessThanHalf" control={<Radio />} label="פחות מחצי טיל במשחק" />
-                    </RadioGroup>
-                </Fade>
-                <br />
-                <RadioGroup className="formSubtitle" name="pickupCargo" formlabel="האם יכול להרים קארגו?" value={this.state.pickupCargo} onChange={this.handleChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="כן" />
-                    <FormControlLabel value="false" control={<Radio />} label="לא" />
-                </RadioGroup>
-                <RadioGroup className="formSubtitle" name="pickupHatches" formlabel="האם יכול להרים האטצ'ים?" value={this.state.pickupHatches} onChange={this.handleChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="כן" />
-                    <FormControlLabel value="false" control={<Radio />} label="לא" />
-                </RadioGroup>
-                <RadioGroup className="formSubtitle" name="priority" formlabel="האם יש עדיפות לחפץ אחד?" value={this.state.priority} onChange={this.handleChange}>
-                    <FormControlLabel value="cargo" control={<Radio />} label="כן, לקארגו" />
-                    <FormControlLabel value="hatches" control={<Radio />} label="כן, להאטצ'ים" />
-                    <FormControlLabel value="false" control={<Radio />} label="לא" />
-                </RadioGroup>
-                <RadioGroup className="formSubtitle" name="climbing" formlabel="האם יכול לטפס?" value={this.state.climbing} onChange={this.handleChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="כן" />
-                    <FormControlLabel value="false" control={<Radio />} label="לא" />
-                </RadioGroup>
-                <Fade top collapse when={this.state.climbing === "true"}>
-                    <Typography variant="subtitle1">לאיזה פלטפורמה יכול לטפס?</Typography>
-                    <FormGroup>
-                        <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
-                        <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
-                    </FormGroup>
-                </Fade>
-                <TextField className="formHeader" fullWidth multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
+                    <QuickGrid spacing={16} direction="column">
+                        <>
+                            <Typography variant="subtitle1">האם יכול להכניס לטיל?</Typography>
+                            <RadioGroup name="rocket" value={this.state.rocket} onChange={this.handleChange}>
+                                <FormControlLabel value="true" control={<Radio />} label="כן" />
+                                <FormControlLabel value="false" control={<Radio />} label="לא" />
+                            </RadioGroup>
+                        </>
+                        <Fade top collapse when={this.state.rocket === "true"}>
+                            <Typography variant="subtitle1">כמה מהרוקט יכול למלא במשחק?</Typography>
+                            <RadioGroup required name="rocketSpeed" value={this.state.rocketSpeed} onChange={this.handleChange}>
+                                <FormControlLabel value="moreThanOne" control={<Radio />} label="יותר מטיל שלם במשחק" />
+                                <FormControlLabel value="full" control={<Radio />} label="טיל שלם במשחק" />
+                                <FormControlLabel value="half" control={<Radio />} label="חצי טיל במשחק" />
+                                <FormControlLabel value="lessThanHalf" control={<Radio />} label="פחות מחצי טיל במשחק" />
+                            </RadioGroup>
+                        </Fade>
+                        <>
+                            <Typography variant="subtitle1">האם יכול להרים קארגו?</Typography>
+                            <RadioGroup name="pickupCargo" value={this.state.pickupCargo} onChange={this.handleChange}>
+                                <FormControlLabel value="true" control={<Radio />} label="כן" />
+                                <FormControlLabel value="false" control={<Radio />} label="לא" />
+                            </RadioGroup>
+                        </>
+                        <>
+                            <Typography variant="subtitle1">האם יכול להרים האטצ'ים?</Typography>
+                            <RadioGroup name="pickupHatches" value={this.state.pickupHatches} onChange={this.handleChange}>
+                                <FormControlLabel value="true" control={<Radio />} label="כן" />
+                                <FormControlLabel value="false" control={<Radio />} label="לא" />
+                            </RadioGroup>
+                        </>
+                        <>
+                            <Typography variant="subtitle1">האם יש עדיפות לחפץ אחד?</Typography>
+                            <RadioGroup name="priority" value={this.state.priority} onChange={this.handleChange}>
+                                <FormControlLabel value="cargo" control={<Radio />} label="כן, לקארגו" />
+                                <FormControlLabel value="hatches" control={<Radio />} label="כן, להאטצ'ים" />
+                                <FormControlLabel value="false" control={<Radio />} label="לא" />
+                            </RadioGroup>
+                        </>
+                        <>
+                            <Typography variant="subtitle1">האם יכול לטפס?</Typography>
+                            <RadioGroup name="climbing" value={this.state.climbing} onChange={this.handleChange}>
+                                <FormControlLabel value="true" control={<Radio />} label="כן" />
+                                <FormControlLabel value="false" control={<Radio />} label="לא" />
+                            </RadioGroup>
+                        </>
+                        <Fade top collapse when={this.state.climbing === "true"}>
+                            <Typography variant="subtitle1">לאיזה פלטפורמה יכול לטפס?</Typography>
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox name="secondPlatform" checked={this.state.secondPlatform} onChange={this.handleCheckbox} />} label="2" />
+                                <FormControlLabel control={<Checkbox name="thirdPlatform" checked={this.state.thirdPlatform} onChange={this.handleCheckbox} />} label="3" />
+                            </FormGroup>
+                        </Fade>
+                    </QuickGrid>
+                    <TextField fullWidth multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
+                </QuickGrid>
             </SForm>
         )
     }

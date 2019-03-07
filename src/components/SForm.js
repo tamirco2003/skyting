@@ -10,16 +10,7 @@ class SForm extends Component {
         return (
             <FormControl fullWidth>
                 <form autoComplete="off" onSubmit={this.props.onSubmit} className={this.props.className}>
-                    {
-                        React.Children.map(children, (child, i) => 
-                            <>
-                                {child.props.formlabel && <Typography variant={child.props.variant ? child.props.variant : "subtitle1"}>{child.props.formlabel}</Typography>}
-                                {child}
-                                {/* <br />
-                                <br /> */}
-                            </>
-                        )
-                    }
+                    { children }
                     <br />
                     <br />
                     <Button variant="contained" color="primary" type="submit" disabled={this.props.loading}>שלח</Button>

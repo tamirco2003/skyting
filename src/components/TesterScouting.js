@@ -4,6 +4,7 @@ import SForm from './SForm';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import QuickGrid from './QuickGrid';
 
 class TesterScouting extends Component {
     constructor(props) {
@@ -61,20 +62,20 @@ class TesterScouting extends Component {
     render() {
         return (
             <SForm onSubmit={this.handleSubmit} className="mostContent" snackbar={this.state.snackbar} loading={this.state.loading}>
-                <TextField className="formHeader" required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
-                <br />
-                <Select value={this.state.tournament} onChange={this.handleChange}
-                    inputProps={{
-                        name: 'tournament'
-                    }}>
-                    <MenuItem value="district1">District 1</MenuItem>
-                    <MenuItem value="district2">District 2</MenuItem>
-                    <MenuItem value="district3">District 3</MenuItem>
-                    <MenuItem value="district4">District 4</MenuItem>
-                    <MenuItem value="israel">ארצי</MenuItem>
-                </Select>
-                <br />
-                <TextField className="formHeader" fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
+                <QuickGrid spacing={16} direction="column">
+                    <TextField required name="scouter" label="שם" value={this.state.scouter} onChange={this.handleChange} margin="none" />
+                    <Select value={this.state.tournament} onChange={this.handleChange}
+                        inputProps={{
+                            name: 'tournament'
+                        }}>
+                        <MenuItem value="district1">District 1</MenuItem>
+                        <MenuItem value="district2">District 2</MenuItem>
+                        <MenuItem value="district3">District 3</MenuItem>
+                        <MenuItem value="district4">District 4</MenuItem>
+                        <MenuItem value="israel">ארצי</MenuItem>
+                    </Select>
+                    <TextField fullWidth required multiline name="notes" label="הערות" value={this.state.notes} onChange={this.handleChange} margin="none" />
+                </QuickGrid>
             </SForm>
         )
     }

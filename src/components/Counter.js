@@ -5,25 +5,20 @@ import PropTypes from "prop-types";
 function Counter(props) {
     return (
         <div style={{ display: "block" }}>
-            <Button
-                variant="outlined"
-                onClick={() => {
-                    if (props.value < props.max) {
-                        props.onChange({
-                            target: {
-                                name: props.name,
-                                value: props.value + 1
-                            }
-                        });
-                    }
-                }}
-            >+</Button>
+            <Button variant="outlined" onClick={() => {
+                if (props.value < props.max) {
+                    props.onChange({
+                        target: {
+                            name: props.name,
+                            value: props.value + 1
+                        }
+                    });
+                }
+            }}>+</Button>
             <Typography variant="h6" style={{ display: "inline-block", padding: 16 }}>
                 {props.value}
             </Typography>
-            <Button
-                variant="outlined"
-                onClick={() => {
+            <Button variant="outlined" onClick={() => {
                     if (props.value > props.min)
                         props.onChange({
                             target: {
@@ -31,8 +26,7 @@ function Counter(props) {
                                 value: props.value - 1
                             }
                         });
-                }}
-            >-</Button>
+                }}>-</Button>
         </div>
     );
 }
