@@ -10,23 +10,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core';
-
-const styles = {
-    menuIcon: {
-        marginLeft: 20,
-        marginRight: -12
-    },
-    title: {
-        flexGrow: 1
-    },
-    list: {
-        width: 250,
-    }
-};
+import './TopNavBar.css'
 
 class TopNavBar extends Component {
-
     state = {
         drawer: false
     };
@@ -38,10 +24,8 @@ class TopNavBar extends Component {
     };
 
     render() {
-        const { classes } = this.props;
-
         const navList = (
-            <div className={classes.list}>
+            <div className="list">
                 <List>
                     <ListItem button key="scouting" component={Link} to="scouting" onClick={this.toggleDrawer(false)}>
                         <ListItemText primary="סקאוטינג" />
@@ -70,10 +54,10 @@ class TopNavBar extends Component {
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton className={classes.menuIcon} color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
+                        <IconButton className="menuIcon" color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.title}>
+                        <Typography variant="h6" color="inherit" className="title">
                             {this.props.barTitle}
                         </Typography>
                     </Toolbar>
@@ -87,4 +71,4 @@ class TopNavBar extends Component {
     }
 }
 
-export default withStyles(styles)(TopNavBar);
+export default TopNavBar;

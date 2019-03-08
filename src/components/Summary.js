@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import ActualSummary from './ActualSummary';
-import { withStyles, Divider } from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-
-const styles = {
-    button: {
-        margin: 20
-    }
-}
 
 class Summary extends Component {
     constructor(props) {
@@ -32,11 +26,10 @@ class Summary extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
             <>
                 <div className="mostContent">
-                    <Select value={this.state.tournament} onChange={this.handleChange} className={classes.button}
+                    <Select value={this.state.tournament} onChange={this.handleChange} className="buttonMargin"
                         inputProps={{
                             name: 'tournament'
                         }}>
@@ -47,7 +40,7 @@ class Summary extends Component {
                         <MenuItem value="israel">ארצי</MenuItem>
                     </Select>
                     <TextField type="number" name="team" label="מס' קבוצה" value={this.state.team} onChange={this.handleChange} margin="none" />
-                    <Button variant="contained" className={classes.button} onClick={(e) => this.setState({ currentTeam: this.state.team, currentTournament: this.state.tournament })}>שלח</Button>
+                    <Button variant="contained" className="buttonMargin" onClick={(e) => this.setState({ currentTeam: this.state.team, currentTournament: this.state.tournament })}>שלח</Button>
                 </div>
                 <Divider />
                 <div className="mostContent">
@@ -60,4 +53,4 @@ class Summary extends Component {
     }
 }
 
-export default withStyles(styles)(Summary);
+export default Summary;

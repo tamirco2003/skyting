@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import Typography from '@material-ui/core/Typography';
 import { Snackbar } from '@material-ui/core';
 
 class SForm extends Component {

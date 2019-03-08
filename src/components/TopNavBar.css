@@ -1,0 +1,10 @@
+.menuIcon.menuIcon {
+    margin-left: 20px;
+    margin-right: -12px;
+}
+.title.title {
+    flex-grow: 1;
+}
+.list.list {
+    width: 250px;
+}

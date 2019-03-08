@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import { withStyles, Divider, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, ButtonBase, CircularProgress } from '@material-ui/core';
+import { Divider, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, ButtonBase, CircularProgress } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import QuickGrid from './QuickGrid';
 import firebase from '../Firebase'
-
-const styles = {
-    button: {
-        margin: 20
-    },
-    notesButton: {
-        padding: 24,
-        whitespace: "pre-line"
-    }
-}
 
 class TesterSummary extends Component {
     constructor(props) {
@@ -47,11 +37,10 @@ class TesterSummary extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
             <>
                 <div className="mostContent">
-                    <Select value={this.state.tournament} onChange={this.handleChange} className={classes.button}
+                    <Select value={this.state.tournament} onChange={this.handleChange} className="buttonMargin"
                         inputProps={{
                             name: 'tournament'
                         }}>
@@ -101,4 +90,4 @@ class TesterSummary extends Component {
     }
 }
 
-export default withStyles(styles)(TesterSummary);
+export default TesterSummary;

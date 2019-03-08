@@ -10,3 +10,7 @@ body {
 .whitespace.whitespace {
   white-space: pre;
 }
+
+.buttonMargin.buttonMargin {
+  margin: 24px;
+}
